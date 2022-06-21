@@ -38,6 +38,21 @@
                 itemValue="id" itemLabel="location" items="${ locations }" /></td>
       </tr>
       <tr>
+        <td>태그:</td>
+        <td><form:select path="tag.id"
+                itemValue="id" itemLabel="tagName" items="${ tags }" /></td>
+      </tr>
+      <tr>
+        <td>분위기:</td>
+        <td><form:select path="mood.id"
+                itemValue="id" itemLabel="mood" items="${ moods }" /></td>
+      </tr>
+      <tr>
+        <td>인원수:</td>
+        <td><form:select path="party.id"
+                itemValue="id" itemLabel="party" items="${ partys }" /></td>
+      </tr>
+      <tr>
         <td>위치:</td>
         <td><form:input path="locate" /></td>
       </tr>

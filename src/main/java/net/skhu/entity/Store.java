@@ -23,5 +23,17 @@ public class Store {
     @ManyToOne
     @JoinColumn(name = "locationId")
     Location location;
+
+    @ManyToOne
+    @JoinColumn(name = "tagId")
+    Tag tag;
+
+    @ManyToOne
+    @JoinColumn(name = "moodId")
+    Mood mood;
+
+    @ManyToOne
+    @JoinColumn(name = "partyId")
+    Party party;
 }
 

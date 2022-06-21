@@ -26,6 +26,18 @@
       <form:option value="0">전체</form:option>
       <form:options itemValue="id" itemLabel="location" items="${ locations }" />
     </form:select>    
+     <form:select path="ti" class="form-control">
+      <form:option value="0">전체</form:option>
+      <form:options itemValue="id" itemLabel="tagName" items="${ tags }" />
+    </form:select>    
+     <form:select path="mi" class="form-control">
+      <form:option value="0">전체</form:option>
+      <form:options itemValue="id" itemLabel="mood" items="${ moods }" />
+    </form:select>   
+     <form:select path="pi" class="form-control">
+      <form:option value="0">전체</form:option>
+      <form:options itemValue="id" itemLabel="party" items="${ partys }" />
+    </form:select>     
     <button type="submit" class="btn">검색</button>
     <a href="create?${pagination.queryString}" class="btn">가게등록</a>
   </form:form>
@@ -37,6 +49,9 @@
         <th>이름</th>
         <th>시간</th>
         <th style="width:70px;">구</th>
+        <th style="width:70px;">태그</th>
+        <th style="width:70px;">인원수</th>
+        <th style="width:70px;">분위기</th>
         <th>위치</th>
       </tr>
     </thead>
@@ -47,6 +62,9 @@
           <td>${ store.name }</td>
           <td>${ store.time }</td>
           <td>${ store.location.location }</td>
+          <td>${ store.tag.tagName }</td>
+          <td>${ store.party.party }</td>
+          <td>${ store.mood.mood }</td>
           <td>${ store.locate }</td>
         </tr>
       </c:forEach>

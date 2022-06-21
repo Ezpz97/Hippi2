@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import net.skhu.entity.Store;
 import net.skhu.model.Pagination;
 import net.skhu.repository.LocationRepository;
+import net.skhu.repository.MoodRepository;
+import net.skhu.repository.PartyRepository;
 import net.skhu.repository.StoreRepository;
+import net.skhu.repository.TagRepository;
 
 @Controller
 @RequestMapping("store")
@@ -21,12 +24,18 @@ public class StoreController {
 
     @Autowired StoreRepository storeRepository;
     @Autowired LocationRepository locationRepository;
+    @Autowired TagRepository tagRepository;
+    @Autowired MoodRepository moodRepository;
+    @Autowired PartyRepository partyRepository;
 
     @RequestMapping("list")
     public String list(Model model, Pagination pagination) {
-        List<Store> stores = storeRepository.findByLocationId(pagination);
+        List<Store> stores = storeRepository.findByLocationIdAndTagId(pagination);
         model.addAttribute("stores", stores);
         model.addAttribute("locations", locationRepository.findAll());
+        model.addAttribute("tags", tagRepository.findAll());
+        model.addAttribute("moods", moodRepository.findAll());
+        model.addAttribute("partys", partyRepository.findAll());
         return "store/list";
     }
 
@@ -34,6 +43,9 @@ public class StoreController {
     public String create(Model model, Pagination pagination) {
         model.addAttribute("store", new Store());
         model.addAttribute("locations", locationRepository.findAll());
+        model.addAttribute("tags", tagRepository.findAll());
+        model.addAttribute("moods", moodRepository.findAll());
+        model.addAttribute("partys", partyRepository.findAll());
         return "store/edit";
     }
 
@@ -51,6 +63,9 @@ public class StoreController {
         Store store = storeRepository.findById(id).get();
         model.addAttribute("store", store);
         model.addAttribute("locations", locationRepository.findAll());
+        model.addAttribute("tags", tagRepository.findAll());
+        model.addAttribute("moods", moodRepository.findAll());
+        model.addAttribute("partys", partyRepository.findAll());
         return "store/edit";
     }
 
